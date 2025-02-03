@@ -8,6 +8,7 @@ function agregarAmigoEnter(event) {
 }
 
 function agregarAmigo() {
+    document.getElementById('resultado').innerHTML = '';
     let nombre = document.getElementById('amigo').value;
     if (nombre.length != 0) {
         if (amigos.includes(nombre)) {
@@ -29,4 +30,15 @@ function mostrarListaAmigos() {
         listaAmigos += `<li>${amigo}</li>`;
     });
     document.getElementById('listaAmigos').innerHTML = listaAmigos;
+}
+
+function sortearAmigo() {
+    if (amigos.length > 1) {
+        let amigoSorteado = amigos[Math.floor(Math.random() * amigos.length)];
+        document.getElementById('listaAmigos').innerHTML = '';
+        document.getElementById('resultado').innerHTML = `<li>${amigoSorteado}</li>`;
+        amigos = [];
+    } else {
+        document.getElementById('section-title').innerHTML = 'No hay suficientes amigos para sortear';
+    }
 }
